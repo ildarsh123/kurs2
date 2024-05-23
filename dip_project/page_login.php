@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); require 'functions.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,19 +34,16 @@
             </a>
         </div>
         <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
-            <?php if(!empty($_SESSION['success'])):?>
-            <div class="alert alert-success">
-                <?php echo $_SESSION['success']; unset($_SESSION['success']);?>
-            </div>
-            <?php endif;?>
-            <form action="">
+            <?php display_flash_message('danger'); display_flash_message('success');?>
+
+            <form action="login.php" method="post">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
-                    <input type="email" id="username" class="form-control" placeholder="Эл. адрес" value="">
+                    <input name="login" type="email" id="username" class="form-control" placeholder="Эл. адрес" value="">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Пароль</label>
-                    <input type="password" id="password" class="form-control" placeholder="" >
+                    <input name="password" type="password" id="password" class="form-control" placeholder="" >
                 </div>
                 <button type="submit" class="btn btn-default float-right">Войти</button>
             </form>
